@@ -3,8 +3,15 @@ Floss is implementation of blue light reduction software like Iris, f.lux, Redsh
 
 The only requirement to run Floss is to have Linux running with X11.
 
-Since this project is open source you need to build it from source. To build Iris Floss run
+Since this project is open source you need to build it from source. To build Iris Floss
 
+If you don't have gcc install it with
+
+```
+sudo apt-get install gcc make
+```
+
+Write also
 ```
 sudo apt-get install libxcb1-dev libxcb-randr0-dev libx11-dev
 ```
