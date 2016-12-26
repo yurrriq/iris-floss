@@ -11,7 +11,7 @@
    You should have received a copy of the GNU General Public License
    along with Iris floss.  If not, see <http://www.gnu.org/licenses/>.
 
-   Copyright (c) 2017  Daniel Georgiev <daniel@iristech.co>
+   Original work Copyright (c) 2017 Daniel Georgiev <daniel@iristech.co>
 */
 
 ////////////////////////////////////////////////////////////
