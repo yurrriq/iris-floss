@@ -25,7 +25,10 @@ You can customize Color temperature and Brightness with command line arguments
 
 Will set Color temperature to **5000K** and Brightness to **90%**
 
-With love for all people who use Linux,
+Specially for all all people who like Linux.
+
+With love,
+
 Daniel :)
 
 http://iristech.co
