@@ -11,7 +11,7 @@ Install all needed dependencies with
 sudo apt-get install gcc make libxrandr-dev
 ```
 
-This will install gcc, xrandr and X11. Then
+This will install gcc, make and xrandr. Then
 
 ```
 make
