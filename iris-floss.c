@@ -7,8 +7,7 @@ int main(int argc, char **argv)
 {
 	Display *dpy = XOpenDisplay(NULL); XRRScreenResources *res = XRRGetScreenResourcesCurrent(dpy, RootWindow(dpy, DefaultScreen(dpy)));
 
-	int temperature = 3400; if (argc > 1) temperature = (int)atoi(argv[1]);
-	float brightness = 0.80f; if (argc > 2) brightness = (float)atof(argv[2])/100.f;
+	int temperature = 3400; if (argc > 1) temperature = (int)myAtoi(argv[1]);	float brightness = 0.80f; if (argc > 2) brightness = (float)myAtoi(argv[2])/100.f; int index = ((temperature) / 100)*3;
 
-	for (int monitor_number = 0; monitor_number < res->ncrtc; monitor_number++) { XRRCrtcGamma *crtc_gamma = XRRAllocGamma(XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number])); for (int i = 0; i < XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number]); i++) {	double g = 65535.0 * i / XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number]); crtc_gamma->red[i] = g * brightness * color_temperature[((temperature) / 100)*3]; crtc_gamma->green[i] = g * brightness * color_temperature[((temperature) / 100)*3+1]; crtc_gamma->blue[i] = g * brightness * color_temperature[((temperature) / 100)*3+2]; } XRRSetCrtcGamma(dpy, res->crtcs[monitor_number], crtc_gamma); XFree(crtc_gamma); } return 0;
+	for (int monitor_number = 0; monitor_number < res->ncrtc; monitor_number++) { XRRCrtcGamma *crtc_gamma = XRRAllocGamma(XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number])); for (int i = 0; i < XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number]); i++) {	double g = 65535.0 * i / XRRGetCrtcGammaSize(dpy, res->crtcs[monitor_number]); crtc_gamma->red[i] = g * brightness * color_temperature[index]; crtc_gamma->green[i] = g * brightness * color_temperature[index+1]; crtc_gamma->blue[i] = g * brightness * color_temperature[index+2]; } XRRSetCrtcGamma(dpy, res->crtcs[monitor_number], crtc_gamma); XFree(crtc_gamma); } return 0;
 }
