@@ -1,15 +1,15 @@
 # iris-floss
-Floss is implementation of blue light reduction software like Iris, f.lux, Redshift, Night Shift with 10 lines of code and minimum dependencies made for Linux.
+Floss is implementation of blue light reduction software like Iris, f.lux, Redshift and Night Shift with 10 lines of code and minimum dependencies for all Linux distributions.
 
 The only requirement to run Floss is to have Linux running with X11.
 
-Since this project is open source you need to build it from source. To build Iris Floss just run
+Since this project is open source you need to build it from source. To build Iris Floss run
 
 ```
 make
 ```
 
-in the iris-floss.c folder and then
+from the **iris-floss.c** folder and then
 
 ```
 ./iris-floss
