@@ -6,6 +6,11 @@ The only requirement to run Floss is to have Linux running with X11.
 Since this project is open source you need to build it from source. To build Iris Floss run
 
 ```
+sudo apt-get install libxcb1-dev libxcb-randr0-dev libx11-dev
+```
+To install xrandr and X11. Then
+
+```
 make
 ```
 
