@@ -8,7 +8,7 @@ Since this project is open source you need to build it from source. To build Iri
 Install all needed dependencies with
 
 ```
-sudo apt-get install gcc make libxcb1-dev libxcb-randr0-dev libx11-dev libxrandr-dev
+sudo apt-get install gcc make libxrandr-dev
 ```
 
 This will install gcc, xrandr and X11. Then
