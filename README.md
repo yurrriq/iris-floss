@@ -1,5 +1,5 @@
 # Iris Floss
-Floss is implementation of blue light reduction software like Iris, f.lux, Redshift and Night Shift with 10 lines of code and minimum dependencies for all Linux distributions.
+Floss is implementation of blue light reduction software like Iris, f.lux, Redshift and Night Shift with minimum dependencies for all Linux distributions.
 
 The only requirement to run Floss is to have Linux running with X11.
 
