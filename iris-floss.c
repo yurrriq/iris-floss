@@ -127,6 +127,7 @@ static float color_temperature[] = {
 ////////////////////////////////////////////////////////////
 int main(int argc, char **argv) 
 {
+	// Get Color temperature
 	int temperature = 3400;
 	if (argc > 1)
 	{
@@ -143,14 +144,14 @@ int main(int argc, char **argv)
 		temperature = 10000; 
 	}
 
-
-	// Validate Brightness
+	// Get Brightness
 	float brightness = 0.80f;
 	if (argc > 2)
 	{
 		brightness = (float)atof(argv[2])/100.f;
 	}
 	
+	// Validate Brightness
 	if(brightness < 0.1f)
 	{
 		brightness = 0.1f;
@@ -160,33 +161,63 @@ int main(int argc, char **argv)
 		brightness = 1.0f;
 	}
 
-	int index = ((temperature) / 100)*3;
+	// Get Monitor number
+	int monitor_number = 0;
+	if (argc > 3)
+	{
+ 		monitor_number = (int)atoi(argv[3]);
+	}
 
  	Display *dpy = XOpenDisplay(NULL);
 	int screen = DefaultScreen(dpy);
 	Window root = RootWindow(dpy, screen);
 	XRRScreenResources *res = XRRGetScreenResourcesCurrent(dpy, root);
 
-	int num_crtcs = res->ncrtc;
-	for (int c = 0; c < num_crtcs; c++) 
-	{
-		int crtcxid = res->crtcs[c];
-		int size = XRRGetCrtcGammaSize(dpy, crtcxid);
+	int monitor_count = res->ncrtc;
 
-		XRRCrtcGamma *crtc_gamma = XRRAllocGamma(size);
+	//Validate Monitor number
+	if (monitor_number < 0) 
+	{ 
+		monitor_number = 0;
+	}
+	if (monitor_number > monitor_count)
+	{
+		monitor_number = monitor_count; 
+	}
+
+	for (int current_monitor = 0; current_monitor < monitor_count; current_monitor++) 
+	{
+		int new_temperature = temperature;
+		float new_brightness = brightness;
+	
+		if(monitor_number > 0)
+		{
+			if(current_monitor != (monitor_number - 1))
+			{
+				new_temperature = 6500;
+				new_brightness = 1.0f;
+			}
+		}
+
+		int index = ((new_temperature) / 100)*3;
+
+		int current_monitor_xid = res->crtcs[current_monitor];
+		int size = XRRGetCrtcGammaSize(dpy, current_monitor_xid);
+
+		XRRCrtcGamma* current_monitor_gamma = XRRAllocGamma(size);
 
 		for (int i = 0; i < size; i++) 
 		{
-			double g = 65535.0 * i / size;
+			double gamma = 65535.0 * i / size;
 
-			crtc_gamma->red[i] = 	g * brightness * color_temperature[index];
-			crtc_gamma->green[i] = 	g * brightness * color_temperature[index+1];
-			crtc_gamma->blue[i] = 	g * brightness * color_temperature[index+2];
+			current_monitor_gamma->red[i] = 	gamma * new_brightness * color_temperature[index];
+			current_monitor_gamma->green[i] = 	gamma * new_brightness * color_temperature[index+1];
+			current_monitor_gamma->blue[i] = 	gamma * new_brightness * color_temperature[index+2];
 		}
 
-		XRRSetCrtcGamma(dpy, crtcxid, crtc_gamma);
+		XRRSetCrtcGamma(dpy, current_monitor_xid, current_monitor_gamma);
 
-		XFree(crtc_gamma);
+		XFree(current_monitor_gamma);
 	}
 
 	printf("Temperature set to %dK\n", temperature);

@@ -33,6 +33,22 @@ You can customize Color temperature and Brightness with command line arguments
 
 Will set Color temperature to **5000K** and Brightness to **90%**
 
+You can Color temperature and brightness per Monitor
+
+To do this there is third parameter which is the monitor number
+
+```
+./iris-floss 3400 80 1
+```
+
+Will set Color temperature to **3400K** and Brightness to **80%** on **Monitor 1**
+
+```
+./iris-floss 6500 100 2
+```
+
+Will set Color temperature to **6500K** and Brightness to **100%** on **Monitor 2**
+
 Specially for all all people who like Linux.
 
 http://iristech.co/iris-floss
