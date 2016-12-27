@@ -187,6 +187,8 @@ int main(int argc, char **argv)
 
 	for (int current_monitor = 0; current_monitor < monitor_count; current_monitor++) 
 	{
+		int skip = 0;
+
 		int new_temperature = temperature;
 		float new_brightness = brightness;
 	
@@ -196,6 +198,9 @@ int main(int argc, char **argv)
 			{
 				new_temperature = 6500;
 				new_brightness = 1.0f;
+
+				//Feature: If you don't want Iris floss to set other monitors to 6500K and 100% uncomment the next line and run "make" again
+				//skip = 1;
 			}
 		}
 
@@ -215,7 +220,10 @@ int main(int argc, char **argv)
 			current_monitor_gamma->blue[i] = 	gamma * new_brightness * color_temperature[index+2];
 		}
 
-		XRRSetCrtcGamma(dpy, current_monitor_xid, current_monitor_gamma);
+		if(skip != 1)
+		{
+			XRRSetCrtcGamma(dpy, current_monitor_xid, current_monitor_gamma);
+		}
 
 		XFree(current_monitor_gamma);
 	}
