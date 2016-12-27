@@ -220,6 +220,11 @@ int main(int argc, char **argv)
 		XFree(current_monitor_gamma);
 	}
 
+	if(monitor_number > 0)
+	{
+		printf("Monitor %d\n", monitor_number);	
+	}
+
 	printf("Temperature set to %dK\n", temperature);
 	printf("Brightness  set to %d%%\n", (int)(brightness * 100));
 
