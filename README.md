@@ -33,7 +33,7 @@ You can customize Color temperature and Brightness with command line arguments
 
 Will set Color temperature to **5000K** and Brightness to **90%**
 
-You can Color temperature and brightness per Monitor
+You can also set Color temperature and brightness per Monitor
 
 To do this there is third parameter which is the monitor number
 
