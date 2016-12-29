@@ -16,7 +16,7 @@ sudo apt-get install build-essential gcc make xorg-dev libx11-dev libxrandr-dev
 Fedora
 
 ```
-sudo dnf install libXrandr-devel
+sudo dnf install gcc make libXrandr-devel
 ```
 
 
