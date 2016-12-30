@@ -66,10 +66,10 @@ Will reset all monitors and set Color temperature to **5000K** and Brightness to
 
 Will set Color temperature to **0K** and Brightness to **50%** on **Monitor 1**
 
-Specially for all all people who like Linux.
-
 # What about Wayland?
 There is a way to get the similar thing for Wayland at the moment. For more info go here
 http://iristech.co/iris-floss-wayland/
+
+Specially for all all people who like Linux.
 
 http://iristech.co/iris-floss
