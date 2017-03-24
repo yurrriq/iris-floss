@@ -1,2 +1,2 @@
 iris-floss: iris-floss.c
-	gcc -Wall -o iris-floss iris-floss.c -lX11 -lXrandr
+	gcc -Wall -std=c99 -o iris-floss iris-floss.c -lX11 -lXrandr
